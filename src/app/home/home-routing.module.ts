@@ -11,21 +11,21 @@ const routes: Routes = [
       {
         path: 'user',
         loadChildren: () =>
-          import('./user/pages/list-user/list-user.module').then(
+          import('./user/list-user/list-user.module').then(
             (m) => m.ListUserPageModule
           ),
       },
       {
         path: 'exercise',
         loadChildren: () =>
-          import('./exercise/pages/list-exercise/list-exercise.module').then(
+          import('./exercise/list-exercise/list-exercise.module').then(
             (m) => m.ListExercisePageModule
           ),
       },
       {
         path: 'profile',
         loadChildren: () =>
-          import('./profile/pages/profile/profile.module').then(
+          import('./profile/profile/profile.module').then(
             (m) => m.ProfilePageModule
           ),
       },

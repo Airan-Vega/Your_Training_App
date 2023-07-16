@@ -10,12 +10,12 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('./auth/pages/login/login.module').then((m) => m.LoginPageModule),
+      import('./auth/login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: '**',
     loadChildren: () =>
-      import('./auth/pages/login/login.module').then((m) => m.LoginPageModule),
+      import('./auth/login/login.module').then((m) => m.LoginPageModule),
   },
 ];
 @NgModule({
