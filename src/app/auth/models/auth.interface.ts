@@ -1,18 +1,6 @@
-export interface Login {
+import { User } from 'src/app/pages/user/models';
+
+export interface Auth {
   ok: boolean;
   user: User;
-}
-interface User {
-  uid: string;
-  fullName: string;
-  email: string;
-  image: Image;
-  role: string;
-  active: boolean;
-  token: string;
-}
-
-interface Image {
-  secure_url: string;
-  public_id: string;
 }

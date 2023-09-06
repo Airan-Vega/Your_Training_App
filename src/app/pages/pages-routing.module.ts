@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomePage } from './home.page';
+import { AuthGuard } from '../guards/auth.guard';
+import { PagesPage } from './pages.page';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomePage,
+    path: '',
+    component: PagesPage,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'user',
@@ -33,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/home/user',
+    redirectTo: '/user',
     pathMatch: 'full',
   },
 ];
@@ -42,4 +44,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HomePageRoutingModule {}
+export class PagesPageRoutingModule {}

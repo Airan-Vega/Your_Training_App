@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ListUserPage } from './list-user.page';
+import { AdminAndMonitorGuard } from 'src/app/guards/admin-and-monitor.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: ListUserPage
-  }
+    component: ListUserPage,
+    canActivate: [AdminAndMonitorGuard],
+  },
 ];
 
 @NgModule({

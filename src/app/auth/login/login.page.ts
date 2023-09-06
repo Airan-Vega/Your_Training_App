@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NavController } from '@ionic/angular';
-import { LoginService } from '../services/login.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { Auth } from '../models/auth.interface';
+import { LocalStorageService } from '../../shared/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
-  // public get background(): Object {
-  //   return {
-  //     '--background': `url('../../../assets/background/dark/background3.svg') no-repeat center center fixed`,
-  //     'background-size': 'cover',
-  //   };
-  // }
+export class LoginPage implements OnInit, OnDestroy {
+  private loginSubscription$: Subscription = new Subscription();
 
   public loginForm = this.formBuilder.group({
     email: [''],
@@ -23,21 +20,35 @@ export class LoginPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService,
+    private authService: AuthService,
+    private localStorageService: LocalStorageService,
     private navController: NavController
   ) {}
 
   ngOnInit() {}
+  ngOnDestroy(): void {
+    this.loginSubscription$.unsubscribe();
+  }
 
-  public async login() {
+  public login() {
     if (this.loginForm.invalid) return;
-
     const { email, password } = this.loginForm.value;
-    const valido = await this.loginService.login(email!, password!);
-    if (valido) {
-      this.navController.navigateRoot('/home/user', { animated: true });
-    } else {
-      //TODO Mostrar Alerta de usuario y contrasela no correctos
-    }
+    this.loginSubscription$ = this.authService
+      .login(email as string, password as string)
+      .subscribe((resp: Auth) => {
+        const saveDatas = [
+          {
+            key: 'token',
+            value: resp.user.token,
+          },
+          {
+            key: 'role',
+            value: resp.user.role,
+          },
+        ];
+        this.localStorageService.saveData(saveDatas).then(() => {
+          this.navController.navigateRoot('/user', { animated: true });
+        });
+      });
   }
 }
