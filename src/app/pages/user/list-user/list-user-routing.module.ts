@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ListUserPage } from './list-user.page';
-import { AdminAndMonitorGuard } from 'src/app/guards/admin-and-monitor.guard';
+import { AdminAndMonitorGuard } from 'src/app/guards';
 
 const routes: Routes = [
   {
