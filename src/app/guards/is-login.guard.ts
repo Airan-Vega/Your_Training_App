@@ -9,12 +9,12 @@ import { AuthService } from '../auth/services/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class IsLoginGuard implements CanActivate {
   constructor(private authService: AuthService) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Promise<boolean> {
-    return this.authService.renewToken();
+    return this.authService.isLogin();
   }
 }

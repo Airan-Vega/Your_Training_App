@@ -8,7 +8,11 @@ import { App } from '@capacitor/app';
 })
 export class AppComponent implements OnInit {
   constructor(private platform: Platform) {}
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.closeApp();
+  }
+
+  private closeApp() {
     this.platform.backButton.subscribeWithPriority(0, () => {
       App.exitApp();
     });
