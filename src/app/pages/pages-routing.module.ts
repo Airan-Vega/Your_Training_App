@@ -26,6 +26,13 @@ const routes: Routes = [
         canActivate: [MonitorGuard],
       },
       {
+        path: 'exercise-detail/:id',
+        loadChildren: () =>
+          import('./exercise/exercise-detail/exercise-detail.module').then(
+            (m) => m.ExerciseDetailPageModule
+          ),
+      },
+      {
         path: 'profile',
         loadChildren: () =>
           import('./profile/profile/profile.module').then(

@@ -1,6 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
@@ -17,8 +16,7 @@ export class LoginPage implements OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private navController: NavController
+    private authService: AuthService
   ) {}
 
   ngOnDestroy(): void {

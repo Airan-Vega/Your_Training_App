@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>exercise-detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <app-spinner *ngIf="isLoading"></app-spinner>
+
+  <ng-container *ngIf="!isLoading">
+    <video controls class="w-full h-full">
+      <source [src]="exercise.video.secure_url" />
+      Your browser does not support the video tag.
+    </video>
+  </ng-container>
+</ion-content>

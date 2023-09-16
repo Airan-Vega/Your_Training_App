@@ -9,7 +9,7 @@ import { App } from '@capacitor/app';
 export class AppComponent implements OnInit {
   constructor(private platform: Platform) {}
   async ngOnInit(): Promise<void> {
-    this.closeApp();
+    // this.closeApp();
   }
 
   private closeApp() {

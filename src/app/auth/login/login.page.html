@@ -1,9 +1,6 @@
 <ion-content [fullscreen]="true">
   <ion-card class="min-h-[90%] flex flex-col items-center justify-center">
-    <img
-      alt="Silhouette of mountains"
-      src="../../../assets/background/background10.svg"
-    />
+    <img alt="login-image" src="../../../assets/background/background10.svg" />
     <ion-card-header>
       <ion-card-subtitle class="mt-1"
         >Empieza tu entrenamiento ahora</ion-card-subtitle
@@ -12,7 +9,11 @@
     </ion-card-header>
 
     <ion-card-content class="w-full">
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+        (keyup.enter)="login()"
+      >
         <ion-item>
           <ion-input
             formControlName="email"
@@ -33,7 +34,7 @@
           class="mt-5"
           type="submit"
           color="primary"
-          expand="full"
+          expand="block"
           (click)="login()"
           >Login</ion-button
         >

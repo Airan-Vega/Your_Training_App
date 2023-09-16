@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ListExercisePageRoutingModule } from './list-exercise-routing.module';
+import { ExerciseDetailPageRoutingModule } from './exercise-detail-routing.module';
 
-import { ListExercisePage } from './list-exercise.page';
-import { ExerciseComponentsModule } from '../components/exercise-components.module';
+import { ExerciseDetailPage } from './exercise-detail.page';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
@@ -15,10 +14,9 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ListExercisePageRoutingModule,
-    ExerciseComponentsModule,
+    ExerciseDetailPageRoutingModule,
     ComponentsModule,
   ],
-  declarations: [ListExercisePage],
+  declarations: [ExerciseDetailPage],
 })
-export class ListExercisePageModule {}
+export class ExerciseDetailPageModule {}
