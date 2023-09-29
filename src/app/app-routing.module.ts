@@ -4,21 +4,33 @@ import { AuthGuard, IsLoginGuard } from './guards';
 
 const routes: Routes = [
   {
+    path: 'auth',
+    loadChildren: () =>
+      import('./auth/auth.module').then((m) => m.AuthPageModule),
+    canActivate: [IsLoginGuard],
+  },
+  {
     path: '',
     loadChildren: () =>
-      import('./pages/pages.module').then((m) => m.PagesPageModule),
+      import('./tabs/tabs.module').then((m) => m.TabsPageModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'login',
+    path: 'user',
     loadChildren: () =>
-      import('./auth/login/login.module').then((m) => m.LoginPageModule),
-    canActivate: [IsLoginGuard],
+      import('./user/user.module').then((m) => m.UserPageModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'exercise',
+    loadChildren: () =>
+      import('./exercise/exercise.module').then((m) => m.ExercisePageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: '**',
     loadChildren: () =>
-      import('./auth/login/login.module').then((m) => m.LoginPageModule),
+      import('./auth/auth.module').then((m) => m.AuthPageModule),
     canActivate: [IsLoginGuard],
   },
 ];

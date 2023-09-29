@@ -1,0 +1,19 @@
+<ion-card>
+  <img [alt]="values.title" [src]="values.image.secure_url" />
+  <ion-card-header>
+    <ion-card-title>{{ values.title }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <div class="flex flex-col">
+      <div>
+        <ion-badge class="mr-3" *ngFor="let category of values.category">{{
+          category
+        }}</ion-badge>
+      </div>
+      <div class="mt-3">
+        {{ values.description }}
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>

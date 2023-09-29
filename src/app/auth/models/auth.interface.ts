@@ -1,4 +1,4 @@
-import { User } from 'src/app/pages/user/models';
+import { User } from 'src/app/user/models';
 
 export interface Auth {
   ok: boolean;

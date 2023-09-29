@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
-import { catchError, map, tap } from 'rxjs/operators';
 
+import { catchError, tap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
 
 import { environment } from 'src/environments/environment';
-import { User } from 'src/app/pages/user/models';
+import { User } from 'src/app/user/models';
 import { Auth } from '../models/auth.interface';
-import { throwError } from 'rxjs';
 
 const apiUrl: string = environment.apiUrl;
 @Injectable({
@@ -60,7 +60,7 @@ export class AuthService {
             token: resp.user.token,
             role: resp.user.role,
           });
-          this.navController.navigateRoot('/user');
+          this.navController.navigateRoot('/list-user');
         }),
         catchError((error: any) => {
           this.storage.clear();
@@ -73,7 +73,7 @@ export class AuthService {
   public async renewToken(): Promise<boolean> {
     await this.getDataLocalStorage();
     if (!this.token) {
-      this.navController.navigateRoot('/login');
+      this.navController.navigateRoot('/auth/login');
       return Promise.resolve(false);
     }
 
@@ -90,7 +90,7 @@ export class AuthService {
               this.authenticatedUser = resp.user;
               resolve(true);
             } else {
-              this.navController.navigateRoot('/login');
+              this.navController.navigateRoot('/auth/login');
               resolve(false);
             }
           })
@@ -102,7 +102,7 @@ export class AuthService {
   public async isLogin(): Promise<boolean> {
     await this.getDataLocalStorage();
     if (this.token) {
-      this.navController.navigateRoot('/user');
+      this.navController.navigateRoot('/list-user');
       return Promise.resolve(false);
     } else {
       return Promise.resolve(true);
@@ -113,6 +113,6 @@ export class AuthService {
     this.token = null;
     this.authenticatedUser = null;
     this.storage.clear();
-    this.navController.navigateRoot('/login', { animated: true });
+    this.navController.navigateRoot('/auth/login', { animated: true });
   }
 }

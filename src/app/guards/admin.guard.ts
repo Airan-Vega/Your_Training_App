@@ -20,7 +20,7 @@ export class AdminGuard implements CanActivate {
     if (role === 'administrator') {
       return true;
     } else {
-      this.navController.navigateRoot('/user', { animated: true });
+      this.navController.navigateRoot('/list-user', { animated: true });
       return false;
     }
   }

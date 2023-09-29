@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>listUser</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div>{{currentOrientation}}</div>
+  <div>{{orientationChange}}</div>
+  <ion-button (click)="setLandscapeOrientation()">Landscape</ion-button>
+  <ion-button (click)="setPortraitOrientation()">Portrait</ion-button>
+  <ion-button (click)="unlockOrientation()">Unlock</ion-button>
+  <ion-button (click)="getCurrentOrientation()"
+    >Get Current Orientation</ion-button
+  >
+</ion-content>

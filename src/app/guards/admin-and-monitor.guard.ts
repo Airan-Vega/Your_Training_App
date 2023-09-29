@@ -20,7 +20,7 @@ export class AdminAndMonitorGuard implements CanActivate {
     if (role === 'administrator' || role === 'monitor') {
       return true;
     } else {
-      this.navController.navigateRoot('/profile', { animated: true });
+      this.navController.navigateRoot('/list-training', { animated: true });
       return false;
     }
   }
