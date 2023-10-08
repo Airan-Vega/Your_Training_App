@@ -8,7 +8,12 @@
   <app-spinner *ngIf="isLoading"></app-spinner>
 
   <ng-container *ngIf="!isLoading">
-    <video controls class="w-full h-full">
+    <video
+      class="w-full h-full"
+      controls
+      autoplay
+      [poster]="exercise.image.secure_url"
+    >
       <source [src]="exercise.video.secure_url" />
       Your browser does not support the video tag.
     </video>

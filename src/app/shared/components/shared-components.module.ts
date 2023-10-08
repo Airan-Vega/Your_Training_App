@@ -3,12 +3,18 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SpinnerComponent, CardComponent],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    SpinnerComponent,
+    CardComponent,
+  ],
   imports: [CommonModule, IonicModule],
-  exports: [HeaderComponent, SpinnerComponent, CardComponent],
+  exports: [HeaderComponent, FooterComponent, SpinnerComponent, CardComponent],
 })
-export class ComponentsModule {}
+export class SharedComponentsModule {}

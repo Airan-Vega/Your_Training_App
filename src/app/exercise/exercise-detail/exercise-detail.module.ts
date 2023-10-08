@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ExerciseDetailPageRoutingModule } from './exercise-detail-routing.module';
 
 import { ExerciseDetailPage } from './exercise-detail.page';
-import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { SharedComponentsModule } from 'src/app/shared/components/shared-components.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
     FormsModule,
     IonicModule,
     ExerciseDetailPageRoutingModule,
-    ComponentsModule,
+    SharedComponentsModule,
   ],
   declarations: [ExerciseDetailPage],
 })

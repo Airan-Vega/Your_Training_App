@@ -1,14 +1,12 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
 })
-export class LoginPage implements OnDestroy {
-  private loginSubscription$: Subscription = new Subscription();
+export class LoginPage implements OnInit {
   public loginForm = this.formBuilder.group({
     email: [''],
     password: [''],
@@ -18,14 +16,11 @@ export class LoginPage implements OnDestroy {
     private formBuilder: FormBuilder,
     private authService: AuthService
   ) {}
+  ngOnInit() {}
 
-  ngOnDestroy(): void {
-    this.loginSubscription$.unsubscribe();
-  }
-
-  login() {
+  public async login() {
     if (this.loginForm.invalid) return;
     const { email, password } = this.loginForm.value;
-    this.authService.login(email as string, password as string);
+    await this.authService.login(email as string, password as string);
   }
 }

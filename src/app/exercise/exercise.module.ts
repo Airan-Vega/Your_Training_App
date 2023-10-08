@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ExercisePageRoutingModule } from './exercise-routing.module';
+import { SharedComponentsModule } from '../shared/components/shared-components.module';
 
 import { ExercisePage } from './exercise.page';
 
@@ -13,8 +14,9 @@ import { ExercisePage } from './exercise.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ExercisePageRoutingModule
+    ExercisePageRoutingModule,
+    SharedComponentsModule,
   ],
-  declarations: [ExercisePage]
+  declarations: [ExercisePage],
 })
 export class ExercisePageModule {}

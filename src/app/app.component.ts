@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { Platform } from '@ionic/angular';
-import { App } from '@capacitor/app';
+import {
+  Component,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { NavigationService } from './shared/services/navigation.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
 })
-export class AppComponent implements OnInit {
-  constructor(private platform: Platform) {}
-  async ngOnInit(): Promise<void> {
-    this.closeApp();
+export class AppComponent implements OnInit, OnChanges, OnDestroy {
+  constructor(private navigationService: NavigationService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['previousValue'] !== changes['currentValue']) {
+      this.navigationService.closeApp();
+    }
+  }
+  ngOnInit() {
+    this.navigationService.closeApp();
   }
 
-  private closeApp() {
-    this.platform.backButton.subscribeWithPriority(0, () => {
-      App.exitApp();
-    });
+  ngOnDestroy() {
+    this.navigationService.destroy();
   }
 }

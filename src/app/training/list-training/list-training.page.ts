@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FooterProps } from 'src/app/shared/components/models';
 
 @Component({
   selector: 'app-list-training',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-training.page.scss'],
 })
 export class ListTrainingPage implements OnInit {
+  public footerProps: FooterProps = {
+    currentUrl: '/training/list-training',
+  };
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

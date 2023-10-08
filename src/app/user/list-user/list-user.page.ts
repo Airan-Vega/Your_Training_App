@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
+import { FooterProps } from 'src/app/shared/components/models';
 
 @Component({
   selector: 'app-list-user',
@@ -8,6 +9,9 @@ import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/n
   styleUrls: ['./list-user.page.scss'],
 })
 export class ListUserPage implements OnInit {
+  public footerProps: FooterProps = {
+    currentUrl: '/user/list-user',
+  };
   public currentOrientation: string;
   public orientationChange: string;
   constructor(private screenOrientation: ScreenOrientation) {

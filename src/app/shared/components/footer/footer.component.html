@@ -1,0 +1,23 @@
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid no-padding>
+      <ion-row align-items-center>
+        <ion-col col text-center *ngFor="let tab of tabList">
+          <div class="flex flex-col items-center justify-center">
+            <ion-icon
+              size="large"
+              [name]="tab.icon"
+              (click)="navigateTab(tab.path)"
+              [color]="props.currentUrl === tab.path ? 'tertiary' : 'medium'"
+            ></ion-icon>
+            <ion-label
+              class="text-xs"
+              [color]="props.currentUrl === tab.path ? 'tertiary' : 'medium'"
+              >{{ tab.title }}</ion-label
+            >
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

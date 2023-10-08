@@ -20,7 +20,7 @@ export class MonitorAndUserGuard implements CanActivate {
     if (role === 'monitor' || role === 'user') {
       return true;
     } else {
-      this.navController.navigateRoot('/list-training', { animated: true });
+      this.navController.navigateRoot('/training/list-training');
       return false;
     }
   }

@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { LoginPageRoutingModule } from './login-routing.module';
-import { ComponentsModule } from '../../shared/components/components.module';
+import { SharedComponentsModule } from '../../shared/components/shared-components.module';
 
 import { LoginPage } from './login.page';
 
@@ -15,8 +15,8 @@ import { LoginPage } from './login.page';
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    ComponentsModule,
     ReactiveFormsModule,
+    SharedComponentsModule,
   ],
   declarations: [LoginPage],
 })

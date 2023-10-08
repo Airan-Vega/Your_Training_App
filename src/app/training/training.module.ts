@@ -4,19 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { UserPageRoutingModule } from './user-routing.module';
+import { TrainingPageRoutingModule } from './training-routing.module';
 import { SharedComponentsModule } from '../shared/components/shared-components.module';
 
-import { UserPage } from './user.page';
+import { TrainingPage } from './training.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserPageRoutingModule,
+    TrainingPageRoutingModule,
     SharedComponentsModule,
   ],
-  declarations: [UserPage],
+  declarations: [TrainingPage],
 })
-export class UserPageModule {}
+export class TrainingPageModule {}

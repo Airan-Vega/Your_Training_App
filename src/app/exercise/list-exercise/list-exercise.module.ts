@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ListExercisePageRoutingModule } from './list-exercise-routing.module';
+import { SharedComponentsModule } from 'src/app/shared/components/shared-components.module';
 
 import { ListExercisePage } from './list-exercise.page';
-import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
     FormsModule,
     IonicModule,
     ListExercisePageRoutingModule,
-    ComponentsModule,
+    SharedComponentsModule,
   ],
   declarations: [ListExercisePage],
 })

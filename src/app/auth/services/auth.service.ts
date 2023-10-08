@@ -7,7 +7,7 @@ import { throwError } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
 
 import { environment } from 'src/environments/environment';
-import { User } from 'src/app/user/models';
+import { Role, User } from 'src/app/user/models';
 import { Auth } from '../models/auth.interface';
 
 const apiUrl: string = environment.apiUrl;
@@ -17,7 +17,7 @@ const apiUrl: string = environment.apiUrl;
 export class AuthService {
   private _storage: Storage | null = null;
   public token: string | null = null;
-  public role: string | null = null;
+  public role: Role;
   public authenticatedUser: User | null = null;
 
   constructor(
@@ -37,7 +37,7 @@ export class AuthService {
     role,
   }: {
     token: string;
-    role: string;
+    role: Role;
   }) {
     this.token = token;
     this.role = role;
@@ -60,7 +60,7 @@ export class AuthService {
             token: resp.user.token,
             role: resp.user.role,
           });
-          this.navController.navigateRoot('/list-user');
+          this.navController.navigateRoot('/user/list-user');
         }),
         catchError((error: any) => {
           this.storage.clear();
@@ -102,7 +102,7 @@ export class AuthService {
   public async isLogin(): Promise<boolean> {
     await this.getDataLocalStorage();
     if (this.token) {
-      this.navController.navigateRoot('/list-user');
+      this.navController.navigateRoot('/user/list-user');
       return Promise.resolve(false);
     } else {
       return Promise.resolve(true);

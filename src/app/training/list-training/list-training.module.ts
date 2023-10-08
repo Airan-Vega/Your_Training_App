@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ListTrainingPageRoutingModule } from './list-training-routing.module';
+import { SharedComponentsModule } from 'src/app/shared/components/shared-components.module';
 
 import { ListTrainingPage } from './list-training.page';
 
@@ -13,8 +14,9 @@ import { ListTrainingPage } from './list-training.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ListTrainingPageRoutingModule
+    ListTrainingPageRoutingModule,
+    SharedComponentsModule,
   ],
-  declarations: [ListTrainingPage]
+  declarations: [ListTrainingPage],
 })
 export class ListTrainingPageModule {}

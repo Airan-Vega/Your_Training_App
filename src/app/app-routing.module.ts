@@ -10,12 +10,6 @@ const routes: Routes = [
     canActivate: [IsLoginGuard],
   },
   {
-    path: '',
-    loadChildren: () =>
-      import('./tabs/tabs.module').then((m) => m.TabsPageModule),
-    canActivate: [AuthGuard],
-  },
-  {
     path: 'user',
     loadChildren: () =>
       import('./user/user.module').then((m) => m.UserPageModule),
@@ -28,10 +22,18 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: '**',
+    path: 'training',
     loadChildren: () =>
-      import('./auth/auth.module').then((m) => m.AuthPageModule),
-    canActivate: [IsLoginGuard],
+      import('./training/training.module').then((m) => m.TrainingPageModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'auth/login',
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'auth/login',
   },
 ];
 @NgModule({

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { FooterProps } from 'src/app/shared/components/models';
 
 @Component({
   selector: 'app-profile',
@@ -9,6 +10,9 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  public footerProps: FooterProps = {
+    currentUrl: '/user/profile',
+  };
   constructor(
     private authService: AuthService,
     private navController: NavController

@@ -13,16 +13,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./login/login.module').then((m) => m.LoginPageModule),
       },
-      {
-        path: '**',
-        loadChildren: () =>
-          import('./login/login.module').then((m) => m.LoginPageModule),
-      },
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'auth/login',
-      },
     ],
   },
 ];
