@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageService } from './shared/services/message.service';
 import { InterceptorService } from './interceptor/interceptor.service';
+import { NavigationService } from './shared/services/navigation.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { InterceptorService } from './interceptor/interceptor.service';
       multi: true,
     },
     MessageService,
+    NavigationService,
   ],
   bootstrap: [AppComponent],
 })

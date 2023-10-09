@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
 
 import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
 
 import { environment } from 'src/environments/environment';
@@ -49,25 +49,22 @@ export class AuthService {
     this.role = (await this.storage.get('role')) || null;
   }
 
-  public login(email: string, password: string): Promise<Auth | undefined> {
+  public login(email: string, password: string): Observable<any> {
     const data = { email, password };
 
-    return this.httpClient
-      .post<Auth>(`${apiUrl}/auth/login`, data)
-      .pipe(
-        tap(async (resp: Auth) => {
-          await this.saveLocalStorage({
-            token: resp.user.token,
-            role: resp.user.role,
-          });
-          this.navController.navigateRoot('/user/list-user');
-        }),
-        catchError((error: any) => {
-          this.storage.clear();
-          return throwError(() => error);
-        })
-      )
-      .toPromise();
+    return this.httpClient.post<Auth>(`${apiUrl}/auth/login`, data).pipe(
+      tap(async (resp: Auth) => {
+        await this.saveLocalStorage({
+          token: resp.user.token,
+          role: resp.user.role,
+        });
+        this.navController.navigateRoot('/user/list-user');
+      }),
+      catchError((error: any) => {
+        this.storage.clear();
+        return throwError(() => error);
+      })
+    );
   }
 
   public async renewToken(): Promise<boolean> {

@@ -9,10 +9,12 @@
 
   <ng-container *ngIf="!isLoading">
     <video
+      #videoElement
       class="w-full h-full"
       controls
       autoplay
       [poster]="exercise.image.secure_url"
+      (loadedmetadata)="onVideoReady()"
     >
       <source [src]="exercise.video.secure_url" />
       Your browser does not support the video tag.

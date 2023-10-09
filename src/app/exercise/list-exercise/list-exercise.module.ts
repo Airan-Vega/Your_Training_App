@@ -8,6 +8,7 @@ import { ListExercisePageRoutingModule } from './list-exercise-routing.module';
 import { SharedComponentsModule } from 'src/app/shared/components/shared-components.module';
 
 import { ListExercisePage } from './list-exercise.page';
+import { ExerciseService } from '../services/exercise.service';
 
 @NgModule({
   imports: [
@@ -18,5 +19,6 @@ import { ListExercisePage } from './list-exercise.page';
     SharedComponentsModule,
   ],
   declarations: [ListExercisePage],
+  providers: [ExerciseService],
 })
 export class ListExercisePageModule {}
