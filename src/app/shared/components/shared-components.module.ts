@@ -6,15 +6,23 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { CardComponent } from './card/card.component';
+import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    FooterComponent,
-    SpinnerComponent,
     CardComponent,
+    FooterComponent,
+    HeaderComponent,
+    InfiniteScrollComponent,
+    SpinnerComponent,
   ],
   imports: [CommonModule, IonicModule],
-  exports: [HeaderComponent, FooterComponent, SpinnerComponent, CardComponent],
+  exports: [
+    CardComponent,
+    FooterComponent,
+    HeaderComponent,
+    InfiniteScrollComponent,
+    SpinnerComponent,
+  ],
 })
 export class SharedComponentsModule {}

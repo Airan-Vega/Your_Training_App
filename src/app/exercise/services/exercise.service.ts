@@ -12,8 +12,10 @@ const apiUrl: string = environment.apiUrl;
 export class ExerciseService {
   constructor(private httpClient: HttpClient) {}
 
-  getExercises(): Observable<Exercises> {
-    return this.httpClient.get<Exercises>(`${apiUrl}/exercise?from=0&limit=10`);
+  getExercises(page: number): Observable<Exercises> {
+    return this.httpClient.get<Exercises>(
+      `${apiUrl}/exercise?page=${page}&limit=10`
+    );
   }
 
   getExercise(id: string): Observable<Exercise> {

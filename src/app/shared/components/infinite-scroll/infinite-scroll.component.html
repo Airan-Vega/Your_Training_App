@@ -1,0 +1,10 @@
+<ion-infinite-scroll
+  [threshold]="props.threshold"
+  [position]="props.position"
+  (ionInfinite)="loadDatas($event)"
+>
+  <ion-infinite-scroll-content
+    [loadingSpinner]="props.loadingSpinner"
+    [loadingText]="props.loadingText"
+  ></ion-infinite-scroll-content>
+</ion-infinite-scroll>
