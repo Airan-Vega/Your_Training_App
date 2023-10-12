@@ -49,10 +49,7 @@ export class ExerciseDetailPage implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.getExercisesSubscription?.unsubscribe();
     this.videoReadySubscription?.unsubscribe();
-    this.videoElement.nativeElement.removeEventListener(
-      'fullscreenchange',
-      this.handleFullscreenChange.bind(this)
-    );
+    this.destroyScreenOrientation();
   }
 
   private handleFullscreenChange() {
@@ -63,6 +60,15 @@ export class ExerciseDetailPage implements OnInit, AfterViewInit, OnDestroy {
     } else {
       this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     }
+  }
+
+  private destroyScreenOrientation() {
+    this.videoElement.nativeElement.removeEventListener(
+      'fullscreenchange',
+      this.handleFullscreenChange.bind(this)
+    );
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    this.screenOrientation.unlock();
   }
 
   public getExercise() {
